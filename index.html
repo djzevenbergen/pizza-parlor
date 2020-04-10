@@ -73,8 +73,13 @@
             <h1>Your Order!</h1>
           </div>
           <div class="panel-body" id="pizzaDisplay">
+            <ul id="pizzaList"></ul>
 
           </div>
+
+
+
+
           <label class="confirmOrder" for="nameForm">Your Name: </label>
           <input class="confirmOrder" type="text" id="nameForm">
           <label class="confirmOrder" for="pickUp">For Pickup</label>
@@ -93,6 +98,28 @@
 
 
     </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default" id="pizzaOrderBox">
+          <div class="panel-head">
+            <h2><span id="pizzaCheck"></span></h2>
+
+          </div>
+          <div class="panel-body">
+            <p>$<span id="pizzaPrice"></span>.00</p>
+            <p><span id="pizzaSizeDisplay"></span></p>
+            <ul id="displayList">
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
 
     <div id="addressModal" class="modal">
 
@@ -121,6 +148,7 @@
             id="timeReceipt"></span> minutes. <span id="methodReceipt"></span>!</p>
         <br>
         <p>Your total will be $<span id="priceReceipt"></span>.00<span id="deliveryFee"></span></p>
+        <p><span id="deliverTo"></span></p>
       </div>
 
     </div>
