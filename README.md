@@ -31,7 +31,7 @@ _This web application uses objects, prototypes, looping, and arrays to recieve a
 
 * - As the user orders, they should be able to click on a list of their pizzas to see details, and delete a pizza if desired.
     * Input: "Pizza 1" on click
-    * Output: "Cheese, Pepperoni, Anchovies" - "Delete?"
+    * Output: "Large","Cheese", "Pepperoni", "Anchovies", "$14.00" - "Delete?"
 
 * - The program deletes pizzas upon click of the delete button.
   * Input: "Cheese, Pepperoni, Anchovies" - "Delete?"  -- on click

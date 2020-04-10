@@ -34,12 +34,21 @@ Order.prototype.displayOrder = function () {
   var pizzaDisplay = $("#pizzaDisplay");
   var htmlForOrderDisplay = "";
   var toppingsForDisplay = "";
+  var size = '';
+
   //console.log(this.pizzas.length);
   for (var i = 0; i < this.pizzas.length; i++) {
+    if (this.pizzas[i].size == 0) {
+      size = "small";
+    } else if (this.pizzas[i].size == 1) {
+      size = "medium";
+    } else {
+      size = "large";
+    }
     for (let n = 0; n < this.pizzas[i].toppings.length; n++) {
       toppingsForDisplay += '<li>' + this.pizzas[i].toppings[n] + '</li>';
     }
-    htmlForOrderDisplay += '<div id="' + this.pizzas[i].id + '" class="pizzas"> <p>Pizza ' + this.pizzas[i].id + '</p><ul>' + toppingsForDisplay + '</ul></div>';
+    htmlForOrderDisplay += '<div id="piz' + this.pizzas[i].id + '" class="pizzas"> <p>Pizza ' + this.pizzas[i].id + '</p><button id=" ' + this.pizzas[i].id + '" type="button" class="close" aria-label="Close">&times;</button><ul class="hidden" id="infopiz' + this.pizzas[i].id + '"><li>Price: $' + this.pizzas[i].price + '</li><li>Size: ' + size + '</li>' + toppingsForDisplay + '</ul></div>';
 
   }
   pizzaDisplay.html(htmlForOrderDisplay);
@@ -70,7 +79,13 @@ Pizza.prototype.calculatePizzaPrice = function () {
 
 function attachPizzaListeners() {
   $("#pizzaDisplay").on("click", ".pizzas", function () {
-    console.log("The id of this <li> is " + this.id + ".");
+    $("#info" + this.id).toggleClass("hidden");
+    console.log(this.id);
+  });
+  $("#pizzaDisplay").on("click", ".close", function () {
+    $("#piz" + this.id).addClass("hide");
+
+    console.log(this.id);
   });
 };
 

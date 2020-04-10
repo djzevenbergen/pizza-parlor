@@ -8,6 +8,10 @@
   float: inherit;
 }
 
+.close {
+  float: right;
+  padding: 0px;
+}
 .pizzas p {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-weight: bolder;
@@ -15,12 +19,19 @@
 }
 
  .pizzas ul {
-  display: none;
   list-style: none;
   text-align: center;
   padding-right: 33px;
 
 } 
+
+.hide {
+  display: none;
+}
+
+.hid {
+  display: none;
+}
 
 .col-xs-6 {
   text-align: center;
