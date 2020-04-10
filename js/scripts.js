@@ -91,6 +91,21 @@ function attachPizzaListeners() {
 };
 
 
+Order.prototype.printReceipt = function (deliv) {
+  if (deliv === "pickup") {
+    $("#receiptName").text(this.name);
+    $("#numberReceipt").text(this.pizzas.length);
+    $("#timeReceipt").text("20");
+    $("#methodReceipt").text("Please come pick it up");
+    $("#priceReceipt").text(this.totalPrice);
+  } else {
+
+
+  }
+
+
+}
+
 
 $(document).ready(function () {
   var order = new Order();
@@ -136,6 +151,7 @@ $(document).ready(function () {
 
     order.name = name;
     if (deliv === "pickup") {
+      order.printReceipt(deliv);
       recModal.style.display = "block";
       //print receipt
     } else {
@@ -147,13 +163,16 @@ $(document).ready(function () {
         order.address.push(street);
         order.address.push(city);
         order.address.push(zip);
+        addressModal.style.display = "none";
+        order.printReceipt(deliv);
+        recModal.style.display = "block";
 
       }
 
     }
 
     span.onclick = function () {
-      order.printReceipt(deliv);
+
       recModal.style.display = "none";
       window.location.reload();
     }
