@@ -54,11 +54,8 @@
                 <br><br>
               </div>
               <button type="submit" class="btn">Add Another Pizza!</button>
-              <button type="button" class="btn" id="finishOrder">Finish Order!</button>
-              <label for="pickUp">For Pickup</label>
-              <input type="radio" id="pickUp" name="takeout" value="0" checked>
-              <label for="delivery">Delivery</label>
-              <input type="radio" id="delivery" name="takeout" value="1">
+
+
 
             </form>
 
@@ -78,6 +75,13 @@
           <div class="panel-body" id="pizzaDisplay">
 
           </div>
+          <label class="confirmOrder" for="nameForm">Your Name: </label>
+          <input class="confirmOrder" type="text" id="nameForm">
+          <label class="confirmOrder" for="pickUp">For Pickup</label>
+          <input class="confirmOrder" type="radio" id="pickUp" name="takeout" value="pickup" checked>
+          <label class="confirmOrder" for="delivery">Delivery</label>
+          <input class="confirmOrder" type="radio" id="delivery" name="takeout" value="delivery">
+          <button type="button" class="btn confirmOrder" id="finishOrder">Confirm Order!</button>
         </div>
 
       </div>
@@ -89,6 +93,38 @@
 
 
     </div>
+
+    <div id="addressModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <label class="addressForm" for="addressForm">Street: </label>
+        <input class="addressForm" type="text" id="streetForm">
+        <label class="addressForm" for="addressForm">City: </label>
+        <input class="addressForm" type="text" id="cityForm">
+        <label class="addressForm" for="addressForm">ZIP: </label>
+        <input class="addressForm" type="text" id="zipForm">
+        <button type="button" id="addressButton">Confirm</button>
+
+      </div>
+
+    </div>
+
+    <div id="receiptModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span id="closes" class="close">&times;</span>
+        <p>Thanks, <span id="receiptName"></span>! Your <span id="numberReceipt"></span> pizzas will be ready in <span
+            id="timeReceipt"></span> minutes. <span id="methodReceipt"></span>!</p>
+        <br>
+        <p>Your total will be $<span id="priceReceipt"></span>.00</p>
+      </div>
+
+    </div>
+
+
+
 
 
 

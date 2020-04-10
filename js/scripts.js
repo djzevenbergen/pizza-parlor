@@ -35,6 +35,7 @@ Order.prototype.displayOrder = function () {
   var htmlForOrderDisplay = "";
   var toppingsForDisplay = "";
   var size = '';
+  $(".confirmOrder").show();
 
   //console.log(this.pizzas.length);
   for (var i = 0; i < this.pizzas.length; i++) {
@@ -115,10 +116,56 @@ $(document).ready(function () {
 
     console.log(order);
 
+  });
+  $("#finishOrder").click(function () {
+    var name = $("#nameForm").val();
+    var deliv = $("input:radio[name=takeout]:checked").val();
+    var recModal = document.getElementById("receiptModal");
+    var addressModal = document.getElementById("addressModal");
+    var addressConfirm = document.getElementById("addressButton");
+    var span = document.getElementById("closes");
+
+    var street = "";
+    var city = "";
+    var zip = "";
+
+    console.log(name);
+    console.log(deliv);
 
 
+
+    order.name = name;
+    if (deliv === "pickup") {
+      recModal.style.display = "block";
+      //print receipt
+    } else {
+      addressModal.style.display = "block";
+      addressConfirm.onclick = function () {
+        street = $("streetForm").val();
+        city = $("cityForm").val();
+        zip = $("zipForm").val();
+        order.address.push(street);
+        order.address.push(city);
+        order.address.push(zip);
+
+      }
+
+    }
+
+    span.onclick = function () {
+      order.printReceipt(deliv);
+      recModal.style.display = "none";
+      window.location.reload();
+    }
+
+    console.log(order);
 
   });
+
+
+
+
+
 
 
 
