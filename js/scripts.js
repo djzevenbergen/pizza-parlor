@@ -10,6 +10,10 @@ function Order() {
 
 }
 
+Order.prototype.deletePizza = function (pizza) {
+
+}
+
 Order.prototype.addPizza = function (pizza) {
   pizza.id = this.assignId();
   this.pizzas.push(pizza);
@@ -25,7 +29,9 @@ Order.prototype.assignId = function () {
 Order.prototype.updateTotalPrice = function () {
   var totePrice = 0;
   for (let i = 0; i < this.pizzas.length; i++) {
-    totePrice += this.pizzas[i].price;
+    if (this.pizzas[i]) {
+      totePrice += this.pizzas[i].price;
+    }
   }
   this.totalPrice = totePrice;
 }
@@ -37,24 +43,22 @@ Order.prototype.displayOrder = function () {
   var size = '';
   $(".confirmOrder").show();
 
-
-  console.log("yett");
-
-  //console.log(this.pizzas.length);
   for (var i = 0; i < this.pizzas.length; i++) {
-    if (this.pizzas[i].size == 0) {
-      size = "small";
-    } else if (this.pizzas[i].size == 1) {
-      size = "medium";
-    } else {
-      size = "large";
-    }
-    var toppingsForDisplay = "";
-    for (let n = 0; n < this.pizzas[i].toppings.length; n++) {
-      toppingsForDisplay += '<li>' + this.pizzas[i].toppings[n] + '</li>';
-    }
-    htmlForOrderDisplay += '<div id="piz' + this.pizzas[i].id + '" class="pizzas"> <p>Pizza ' + this.pizzas[i].id + '</p><button id=" ' + this.pizzas[i].id + '" type="button" class="close" aria-label="Close">&times;</button><ul class="hidden" id="infopiz' + this.pizzas[i].id + '"><li>Price: $' + this.pizzas[i].price + '</li><li>Size: ' + size + '</li>' + toppingsForDisplay + '</ul></div>';
+    if (this.pizza[i]) {
+      if (this.pizzas[i].size == 0) {
+        size = "small";
+      } else if (this.pizzas[i].size == 1) {
+        size = "medium";
+      } else {
+        size = "large";
+      }
+      var toppingsForDisplay = "";
+      for (let n = 0; n < this.pizzas[i].toppings.length; n++) {
+        toppingsForDisplay += '<li>' + this.pizzas[i].toppings[n] + '</li>';
+      }
+      htmlForOrderDisplay += '<div id="piz' + this.pizzas[i].id + '" class="pizzas"> <p>Pizza ' + this.pizzas[i].id + '</p><button id=" ' + this.pizzas[i].id + '" type="button" class="close" aria-label="Close">&times;</button><ul class="hidden" id="infopiz' + this.pizzas[i].id + '"><li>Price: $' + this.pizzas[i].price + '</li><li>Size: ' + size + '</li>' + toppingsForDisplay + '</ul></div>';
 
+    }
   }
   pizzaDisplay.html(htmlForOrderDisplay);
 
