@@ -6,7 +6,12 @@ function Order() {
     this.name = '',
     this.address = [],
     this.totalPrice = 0
+}
 
+Order.prototype.addPizza = function (pizza) {
+  pizza.id = this.assignId();
+  this.pizzas.push(pizza);
+  this.updateTotalPrice();
 
 }
 
@@ -24,13 +29,6 @@ Order.prototype.deletePizza = function (id) {
   return false;
 }
 
-Order.prototype.addPizza = function (pizza) {
-  pizza.id = this.assignId();
-  this.pizzas.push(pizza);
-  this.updateTotalPrice();
-
-}
-
 Order.prototype.assignId = function () {
   this.currentId += 1;
   return this.currentId;
@@ -46,7 +44,6 @@ Order.prototype.updateTotalPrice = function () {
   this.totalPrice = totePrice;
 }
 
-
 Order.prototype.addPizzaToList = function () {
   var listItem = "";
   var pizzaList = $("#pizzaList");
@@ -61,16 +58,11 @@ Order.prototype.addPizzaToList = function () {
 }
 
 Order.prototype.displayOrder = function (id) {
-  var pizzaDisplay = $("#pizzaDisplay");
-
-  var htmlForOrderDisplay = "";
-  var listItem = "";
   var size = '';
   var price = 0;
   var thisName = "";
 
   $("#pizzaDisplayBox").show();
-
 
   for (var i = 0; i < this.pizzas.length; i++) {
     if (this.pizzas[i]) {
@@ -88,13 +80,7 @@ Order.prototype.displayOrder = function (id) {
         for (let n = 0; n < this.pizzas[i].toppings.length; n++) {
           toppingsForDisplay += '<li>' + this.pizzas[i].toppings[n] + '</li>';
         }
-
       }
-
-
-      // listItem += '<li id="' + this.pizzas[i].id + '"> Pizza ' + this.pizzas[i].id + ' </li>';
-      // htmlForOrderDisplay += '<p class="pizzas" id ="' + this.pizzas[i].id + '">Pizza ' + this.pizzas[i].id + '</p> <div class="" id="pizzaDiv' + this.pizzas[i].id + '> <button id=" ' + this.pizzas[i].id + '" type="button" class="close" aria-label="Close">&times;</button><ul><li>Price: $' + this.pizzas[i].price + '</li><li>Size: ' + size + '</li>' + toppingsForDisplay + '</ul></div>';
-
     }
   }
   $("#pizzaCheck").text(thisName);
@@ -106,48 +92,6 @@ Order.prototype.displayOrder = function (id) {
   //pizzaDisplay.html(htmlForOrderDisplay);
 
 }
-
-//pizza logic
-function Pizza(size, toppings, price) {
-  this.size = size,
-    this.toppings = toppings,
-    this.price = 0
-}
-
-Pizza.prototype.calculatePizzaPrice = function () {
-  //var pizzaPrice = 0;
-  var basePrice = 6;
-  var increment = 2;
-
-  basePrice += (increment * this.size);
-
-  if (this.toppings.includes("Cheese")) {
-    basePrice += ((this.toppings.length - 1) * 2);
-  } else {
-    basePrice += ((this.toppings.length) * 2);
-  }
-  this.price = basePrice;
-}
-
-function attachPizzaListeners(order) {
-  $("#pizzaList").on('click', 'li', function () {
-    console.log(this.id);
-    order.displayOrder(this.id);
-    //console.log(this.id);
-  });
-  $("#deleteButton").on("click", "button", function () {
-    $(".pizzaList#" + this.id).addClass("hide");
-    order.deletePizza(this.id);
-    order.addPizzaToList();
-    console.log(order);
-    $("#pizzaDisplayBox").hide();
-    order.updateTotalPrice();
-    console.log(order);
-
-    //console.log(this.id);
-  });
-};
-
 
 Order.prototype.printReceipt = function (deliv) {
 
@@ -184,8 +128,52 @@ Order.prototype.printReceipt = function (deliv) {
 
   }
 
-
 }
+
+
+//pizza logic
+function Pizza(size, toppings, price) {
+  this.size = size,
+    this.toppings = toppings,
+    this.price = 0
+}
+
+Pizza.prototype.calculatePizzaPrice = function () {
+  var basePrice = 6;
+  var increment = 2;
+
+  basePrice += (increment * this.size);
+
+  if (this.toppings.includes("Cheese")) {
+    basePrice += ((this.toppings.length - 1) * 2);
+  } else {
+    basePrice += ((this.toppings.length) * 2);
+  }
+  this.price = basePrice;
+}
+
+function attachPizzaListeners(order) {
+  $("#pizzaList").on('click', 'li', function () {
+    console.log(this.id);
+    order.displayOrder(this.id);
+
+  });
+  $("#deleteButton").on("click", "button", function () {
+    $(".pizzaList#" + this.id).addClass("hide");
+    order.deletePizza(this.id);
+    order.addPizzaToList();
+    console.log(order);
+    $("#pizzaDisplayBox").hide();
+    order.updateTotalPrice();
+    console.log(order);
+
+  });
+};
+
+
+
+
+// UI
 
 
 $(document).ready(function () {
@@ -218,10 +206,6 @@ $(document).ready(function () {
 
     order.addPizzaToList();
 
-
-
-    //console.log(order);
-
   });
   $("#finishOrder").click(function () {
     var name = $("#nameForm").val();
@@ -234,11 +218,6 @@ $(document).ready(function () {
     var street = "";
     var city = "";
     var zip = "";
-
-    //console.log(name);
-    //console.log(deliv);
-
-
 
     order.name = name;
     if (deliv === "pickup") {
@@ -257,26 +236,11 @@ $(document).ready(function () {
         addressModal.style.display = "none";
         order.printReceipt(deliv);
         recModal.style.display = "block";
-
       }
-
     }
-
     span.onclick = function () {
-
       recModal.style.display = "none";
       window.location.reload();
     }
-
-    //console.log(order);
-
   });
-
-
-
-
-
-
-
-
 });
