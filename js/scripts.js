@@ -89,8 +89,6 @@ Order.prototype.displayOrder = function (id) {
   $("#pizzaSizeDisplay").text(size);
   $("#deleteButton").html('<button id="' + id + '" type="button">delete this pizza</button>')
 
-  //pizzaDisplay.html(htmlForOrderDisplay);
-
 }
 
 Order.prototype.printReceipt = function (deliv) {
@@ -154,7 +152,7 @@ Pizza.prototype.calculatePizzaPrice = function () {
 
 function attachPizzaListeners(order) {
   $("#pizzaList").on('click', 'li', function () {
-    console.log(this.id);
+
     order.displayOrder(this.id);
 
   });
@@ -162,16 +160,13 @@ function attachPizzaListeners(order) {
     $(".pizzaList#" + this.id).addClass("hide");
     order.deletePizza(this.id);
     order.addPizzaToList();
-    console.log(order);
+
     $("#pizzaDisplayBox").hide();
     order.updateTotalPrice();
-    console.log(order);
+
 
   });
 };
-
-
-
 
 // UI
 
