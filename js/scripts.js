@@ -33,9 +33,12 @@ Order.prototype.updateTotalPrice = function () {
 Order.prototype.displayOrder = function () {
   var pizzaDisplay = $("#pizzaDisplay");
   var htmlForOrderDisplay = "";
-  var toppingsForDisplay = "";
+
   var size = '';
   $(".confirmOrder").show();
+
+
+  console.log("yett");
 
   //console.log(this.pizzas.length);
   for (var i = 0; i < this.pizzas.length; i++) {
@@ -46,6 +49,7 @@ Order.prototype.displayOrder = function () {
     } else {
       size = "large";
     }
+    var toppingsForDisplay = "";
     for (let n = 0; n < this.pizzas[i].toppings.length; n++) {
       toppingsForDisplay += '<li>' + this.pizzas[i].toppings[n] + '</li>';
     }
@@ -81,25 +85,39 @@ Pizza.prototype.calculatePizzaPrice = function () {
 function attachPizzaListeners() {
   $("#pizzaDisplay").on("click", ".pizzas", function () {
     $("#info" + this.id).toggleClass("hidden");
-    console.log(this.id);
+    //console.log(this.id);
   });
   $("#pizzaDisplay").on("click", ".close", function () {
     $("#piz" + this.id).addClass("hide");
 
-    console.log(this.id);
+    //console.log(this.id);
   });
 };
 
 
 Order.prototype.printReceipt = function (deliv) {
+
+  var time = 10;
+
+  time += (5 * this.pizzas.length);
+
+  if (deliv === "delivery") {
+    time += 20;
+  }
+
+  $("#receiptName").text(this.name);
+  $("#numberReceipt").text(this.pizzas.length);
+  $("#timeReceipt").text(time);
+
   if (deliv === "pickup") {
-    $("#receiptName").text(this.name);
-    $("#numberReceipt").text(this.pizzas.length);
-    $("#timeReceipt").text("20");
     $("#methodReceipt").text("Please come pick it up");
     $("#priceReceipt").text(this.totalPrice);
-  } else {
 
+  } else {
+    $("#methodReceipt").text("A member of our delivery team will bring it straight to your door!");
+    var price = this.totalPrice + 5;
+    $("#priceReceipt").text(price);
+    $("#deliveryFee").text(" including a $5.00 delivery fee!")
 
   }
 
@@ -122,6 +140,14 @@ $(document).ready(function () {
       topp.push(top);
     });
 
+    $("#pizzaSize option").prop('selected', function () {
+      return this.defaultSelected;
+    });
+
+    $("input:checkbox[name=toppings]:checked").each(function () {
+      this.checked = false;
+    })
+
     var pizza = new Pizza(size, topp);
     pizza.calculatePizzaPrice();
 
@@ -129,7 +155,9 @@ $(document).ready(function () {
 
     order.displayOrder();
 
-    console.log(order);
+
+
+    //console.log(order);
 
   });
   $("#finishOrder").click(function () {
@@ -144,8 +172,8 @@ $(document).ready(function () {
     var city = "";
     var zip = "";
 
-    console.log(name);
-    console.log(deliv);
+    //console.log(name);
+    //console.log(deliv);
 
 
 
@@ -177,7 +205,7 @@ $(document).ready(function () {
       window.location.reload();
     }
 
-    console.log(order);
+    //console.log(order);
 
   });
 
