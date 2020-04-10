@@ -30,7 +30,21 @@ Order.prototype.updateTotalPrice = function () {
   this.totalPrice = totePrice;
 }
 
+Order.prototype.displayOrder = function () {
+  var pizzaDisplay = $("#pizzaDisplay");
+  var htmlForOrderDisplay = "";
+  var toppingsForDisplay = "";
+  //console.log(this.pizzas.length);
+  for (var i = 0; i < this.pizzas.length; i++) {
+    for (let n = 0; n < this.pizzas[i].toppings.length; n++) {
+      toppingsForDisplay += '<li>' + this.pizzas[i].toppings[n] + '</li>';
+    }
+    htmlForOrderDisplay += '<div id="' + this.pizzas[i].id + '" class="pizzas"> <p>Pizza' + this.pizzas[i].id + '</p><ul>' + toppingsForDisplay + '</ul></div>';
 
+  }
+  pizzaDisplay.html(htmlForOrderDisplay);
+
+}
 
 //pizza logic
 function Pizza(size, toppings, price) {
@@ -56,7 +70,6 @@ Pizza.prototype.calculatePizzaPrice = function () {
 
 
 
-
 $(document).ready(function () {
   var order = new Order();
   $("#pizzaForm").submit(function (event) {
@@ -76,9 +89,10 @@ $(document).ready(function () {
 
     order.addPizza(pizza);
 
+    order.displayOrder();
 
     console.log(order);
-    //console.log(pizza);
+
 
 
 
