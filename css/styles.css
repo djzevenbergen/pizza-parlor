@@ -30,6 +30,9 @@
   padding-right: 33px;
 }
 
+#pizzaDisplayBox {
+  display: none;
+}
 
 #displayList {
   text-align: center;

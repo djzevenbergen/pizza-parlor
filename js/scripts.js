@@ -12,9 +12,11 @@ function Order() {
 
 Order.prototype.deletePizza = function (id) {
   for (var i = 0; i < this.pizzas.length; i++) {
+
     if (this.pizzas[i]) {
-      if (this.pizzas[i] == id) {
-        delete this.contacts[i];
+
+      if (this.pizzas[i].id == id) {
+        delete this.pizzas[i];
         return true;
       }
     }
@@ -67,12 +69,13 @@ Order.prototype.displayOrder = function (id) {
   var price = 0;
   var thisName = "";
 
+  $("#pizzaDisplayBox").show();
 
 
   for (var i = 0; i < this.pizzas.length; i++) {
     if (this.pizzas[i]) {
       if (this.pizzas[i].id == id) {
-        thisName = "Pizza" + this.pizzas[i].id;
+        thisName = "Pizza " + this.pizzas[i].id;
         price = this.pizzas[i].price;
         if (this.pizzas[i].size == 0) {
           size = "small";
@@ -98,6 +101,7 @@ Order.prototype.displayOrder = function (id) {
   $("#pizzaPrice").text(price);
   $("#displayList").html(toppingsForDisplay);
   $("#pizzaSizeDisplay").text(size);
+  $("#deleteButton").html('<button id="' + id + '" type="button">delete this pizza</button>')
 
   //pizzaDisplay.html(htmlForOrderDisplay);
 
@@ -131,8 +135,14 @@ function attachPizzaListeners(order) {
     order.displayOrder(this.id);
     //console.log(this.id);
   });
-  $("#pizzaDisplay").on("click", ".close", function () {
-    $("#piz" + this.id).addClass("hide");
+  $("#deleteButton").on("click", "button", function () {
+    $(".pizzaList#" + this.id).addClass("hide");
+    order.deletePizza(this.id);
+    order.addPizzaToList();
+    console.log(order);
+    $("#pizzaDisplayBox").hide();
+    order.updateTotalPrice();
+    console.log(order);
 
     //console.log(this.id);
   });
@@ -141,16 +151,24 @@ function attachPizzaListeners(order) {
 
 Order.prototype.printReceipt = function (deliv) {
 
+  var totalPizzas = 0;
+
+  for (var i = 0; i < this.pizzas.length; i++) {
+    if (!jQuery.isEmptyObject(this.pizzas[i])) {
+      totalPizzas += 1;
+    }
+  }
+
   var time = 10;
 
-  time += (5 * this.pizzas.length);
+  time += (5 * totalPizzas);
 
   if (deliv === "delivery") {
     time += 20;
   }
 
   $("#receiptName").text(this.name);
-  $("#numberReceipt").text(this.pizzas.length);
+  $("#numberReceipt").text(totalPizzas);
   $("#timeReceipt").text(time);
 
   if (deliv === "pickup") {
