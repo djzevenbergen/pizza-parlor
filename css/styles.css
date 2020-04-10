@@ -2,9 +2,12 @@
   display: none;
 }
 
-#rogers {
- 
-  width: 50%;
+.pizzas {
+  border: solid 2px black;
+}
+
+.pizzas ul {
+  display: none;
 }
 
 .col-xs-6 {

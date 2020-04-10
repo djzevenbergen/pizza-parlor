@@ -28,7 +28,7 @@
             <h1>Choose Your Size and Toppings!</h1>
           </div>
           <div class="panel-body">
-            <form id="pizza">
+            <form id="pizzaForm">
               <div class="sizeBox">
                 <select id="pizzaSize" name="pizzaSize">
                   <option value="0">Small ($6.00)</option>
@@ -53,38 +53,49 @@
                 <label for="anchovies"> Anchovies</label>
                 <br><br>
               </div>
-              <button type="submit" class="btn">Submit Order!</button>
-              <button type="button" class="btn">Add Another Pizza!</button>
+              <button type="submit" class="btn">Add Another Pizza!</button>
+              <button type="button" class="btn" id="finishOrder">Finish Order!</button>
             </form>
 
           </div>
         </div>
-
-
-
-
       </div>
+
+
+
 
       <div class="col-xs-6">
 
         <div class="panel panel-default" id="pizzaOrderBox">
           <div class="panel-head">
-            <h1>Choose Order!</h1>
+            <h1>Your Order!</h1>
           </div>
           <div class="panel-body">
+            <div id="one" class="pizzas">
+              <p>Pizza 1</p>
+              <ul>
+                <li>Cheese</li>
+                <li>Pepperoni</li>
+                <li>Bell Peppers</li>
+              </ul>
 
+            </div>
 
           </div>
         </div>
 
-
-
-
-
-
       </div>
 
+
+
+
+
+
+
     </div>
+
+
+
 
 
 
