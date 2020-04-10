@@ -39,7 +39,7 @@ Order.prototype.displayOrder = function () {
     for (let n = 0; n < this.pizzas[i].toppings.length; n++) {
       toppingsForDisplay += '<li>' + this.pizzas[i].toppings[n] + '</li>';
     }
-    htmlForOrderDisplay += '<div id="' + this.pizzas[i].id + '" class="pizzas"> <p>Pizza' + this.pizzas[i].id + '</p><ul>' + toppingsForDisplay + '</ul></div>';
+    htmlForOrderDisplay += '<div id="' + this.pizzas[i].id + '" class="pizzas"> <p>Pizza ' + this.pizzas[i].id + '</p><ul>' + toppingsForDisplay + '</ul></div>';
 
   }
   pizzaDisplay.html(htmlForOrderDisplay);
@@ -68,10 +68,17 @@ Pizza.prototype.calculatePizzaPrice = function () {
   this.price = basePrice;
 }
 
+function attachPizzaListeners() {
+  $("#pizzaDisplay").on("click", ".pizzas", function () {
+    console.log("The id of this <li> is " + this.id + ".");
+  });
+};
+
 
 
 $(document).ready(function () {
   var order = new Order();
+  attachPizzaListeners();
   $("#pizzaForm").submit(function (event) {
     event.preventDefault();
 

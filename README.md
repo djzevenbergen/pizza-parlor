@@ -16,17 +16,17 @@ _This web application uses objects, prototypes, looping, and arrays to recieve a
 
 ## Specs
 
-* - The program returns the user's order and name upon "order" click.
-    * Input: Name: "Dave", "Cheese", "Pepperoni", "Anchovies"
-    * Output: "Thanks, Dave. Your Pizza with Cheese, Pepperoni, and Anchovies should be ready soon!"
+* - The program returns the user's order and pizza number upon "order" click.
+    * Input: "Large", "Cheese", "Pepperoni", "Anchovies"
+    * Output: "Pizza 1, "Large", "Cheese", "Pepperoni", "Anchovies"
 
 * - The program calculates and returns a price based on the amound of toppings, with cheese not counting as an extra topping.
-    * Input: "Dave", "Cheese", "Pepperoni", "Anchovies"
-    * Output: "Thanks, Dave. Your 2 topping pizza with Cheese, Pepperoni, and Anchovies will cost $14.00. Your order should be ready soon!
+    * Input: "Large", "Cheese", "Pepperoni", "Anchovies"
+    * Output: "Pizza 1, "Large", "Cheese", "Pepperoni", "Anchovies", "$14.00"
 
 * - The program has capabilities to handle multiple different pizzas, calculating total cost upon order
-    * Input: "Dave", '"Cheese", "Pepperoni", "Anchovies", 1', '"Cheese", "Sausage", 2'
-    * Output: "Thanks, Dave. Your 2 pizzas (Cheese, Pepperoni, Anchovies) and (Cheese, Sausage) will cost $26.00. Your order should be ready soon!
+    * Input: '"Large","Cheese", "Pepperoni", "Anchovies", '"Small", "Cheese", "Sausage"'
+    * Output: '"Pizza 1", "Large","Cheese", "Pepperoni", "Anchovies", "$14.00"', '"Pizza 2", "Small", "Cheese", "Sausage", "$8.00"' 
 
 
 * - As the user orders, they should be able to click on a list of their pizzas to see details, and delete a pizza if desired.
