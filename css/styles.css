@@ -1,0 +1,92 @@
+.hidden {
+  display: none;
+}
+
+#rogers {
+ 
+  width: 50%;
+}
+
+.col-xs-6 {
+  text-align: center;
+}
+.rog {
+  text-align: center;
+}
+
+#resultBox {
+  display: none;
+}
+
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+#rogers2 {
+  display: none;
+  width: 50%;
+}
+
+#rogers3 {
+  align-items: center;
+  display: none;
+  width: 50%;
+}
+
+#again {
+  display: none;
+}
+#headbox {
+  color: yellow;
+  border: 5px solid red;
+  padding: 4px;
+  background-color: red;
+  text-align: center;
+  margin-top: 10px;
+}
+
+body {
+  background-color: plum;
+}
+
+.row {
+  text-align: center;
+}
+
+.btn {
+  color: white;
+  border: 2px solid white;
+  padding: 4px;
+  background-color: peru;
+  text-align: center;
+}
+
+.question {
+  display: none
+ 
+}
+
+.center {
+  text-align: center;
+}
+
+.panel {
+  margin-top: 5%;
+  margin-right: 20%;
+  margin-left: 20%;
+  background-color: rgba(147, 228, 224, 0.671);
+  border: 5px solid black;
+ 
+
+}
+
+.panel > .panel-heading {
+  text-align: center;
+  background-color: peru;
+  border-bottom-width: 5px;
+  border-bottom-color: black;
+
+
+}

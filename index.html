@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/jquery-3.4.1.js"></script>
+  <script src="js/scripts.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizza Parlor</title>
+</head>
+
+<body>
+
+  <div class="container" id="ope">
+    <div class="jumbotron" id="headbox">
+      <h1>God of Zah's Pizza</h1>
+      <p>Enlighten yourself through further encumberment of your physical self!</p>
+
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6">
+
+        <div class="panel panel-default" id="pizzaOrderBox">
+          <div class="panel-head">
+            <h1>Choose Your Size and Toppings!</h1>
+          </div>
+          <div class="panel-body">
+            <form id="pizza">
+              <div class="sizeBox">
+                <select id="pizzaSize" name="pizzaSize">
+                  <option value="0">Small ($6.00)</option>
+                  <option value="1">Medium ($8.00)</option>
+                  <option value="2">Large ($10.00)</option>
+                </select>
+              </div>
+              <div class="toppingBox">
+                <p>Cheese is free! Any other toppings are $2.00 each</p>
+                <input type="checkbox" id="cheese" name="cheese" value="Cheese">
+                <label for="cheese"> Cheese</label><br>
+                <input type="checkbox" id="pepperoni" name="pepperoni" value="Pepperoni">
+                <label for="pepperoni"> Pepperoni</label><br>
+                <input type="checkbox" id="sausage" name="sausage" value="Sausage">
+                <label for="sausage"> Sausage</label>
+                <br>
+                <input type="checkbox" id="olives" name="olives" value="Olives">
+                <label for="olives"> Olives</label><br>
+                <input type="checkbox" id="bellPeppers" name="bellPeppers" value="Bell Peppers">
+                <label for="bellPeppers">Bell Peppers</label><br>
+                <input type="checkbox" id="anchovies" name="anchovies" value="Anchovies">
+                <label for="anchovies"> Anchovies</label>
+                <br><br>
+              </div>
+              <button type="submit" class="btn">Submit Order!</button>
+              <button type="button" class="btn">Add Another Pizza!</button>
+            </form>
+
+          </div>
+        </div>
+
+
+
+
+      </div>
+
+      <div class="col-xs-6">
+
+        <div class="panel panel-default" id="pizzaOrderBox">
+          <div class="panel-head">
+            <h1>Choose Order!</h1>
+          </div>
+          <div class="panel-body">
+
+
+          </div>
+        </div>
+
+
+
+
+
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+</body>
+
+</html>
