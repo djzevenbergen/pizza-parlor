@@ -37,9 +37,9 @@ _This web application uses objects, prototypes, looping, and arrays to recieve a
   * Input: "Cheese, Pepperoni, Anchovies" - "Delete?"  -- on click
   * Output: "pizza 1 - deleted"
 
-* - The program gives a brief congratulations upon order of 5 pizzas
-  * Input: "Dave", '"Cheese", "Pepperoni", "Anchovies", 1', '"Cheese", "Sausage", 2', '"Cheese", "Bell Pepper", 3', '"Cheese", "Onion", "Olive", 4', '"Cheese" 5'
-  * Output: "Ayy, you order 5 pizzas! Our Lord, the God of Zah, thanks you!"
+* - The program gives a total price and estimated time that the pizza will be ready based on number of pizzas and pickup vs delivery option
+  * Example: Estimated time goes up by 5 minutes per pizza and 20 minutes is added if it is a delivery
+  
 
 
 

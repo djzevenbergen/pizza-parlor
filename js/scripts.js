@@ -42,6 +42,8 @@ Order.prototype.updateTotalPrice = function () {
     }
   }
   this.totalPrice = totePrice;
+  $("#total").removeClass("hidden");
+  $("#currentPrice").text(this.totalPrice);
 }
 
 Order.prototype.addPizzaToList = function () {
