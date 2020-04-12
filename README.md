@@ -42,7 +42,10 @@ _This web application uses objects, prototypes, looping, and arrays to recieve a
   
 
 
-
+## Known Bugs
+- The submit button says "add another pizza" even if the user hasn't entered a pizza yet
+- On click, the individual pizza details are displayed far down the page with no alert or anything notifying the user
+- The receipt says "your pizzas" plural, even if the user only orders 1 pizza
 
 
 ## Access to Website
